@@ -40,7 +40,7 @@ def llama_reply():
             }
         ]
     )
-    return(render_template("llama_reply.html",r=completion.choices[0].message.content))
+    return(render_template("llama_reply.html",r=completion.choices[0].message.content), r1=q)
 
 @app.route("/sealion",methods=["GET","POST"])
 def sealion():
