@@ -41,6 +41,31 @@ def llama_reply():
     )
     return(render_template("llama_reply.html",r=completion.choices[0].message.content))
 
+@app.route("/sealion",methods=["GET","POST"])
+def llama():
+    return(render_template("sealion.html"))
+
+@app.route("/sealion_reply",methods=["GET","POST"])
+def sealion_reply():
+    q = request.form.get("q")
+    # load model
+
+    client = OpenAI(
+        api_key=os.environ['SEALION_API_KEY'],
+        base_url="https://api.sea-lion.ai/v1"
+    )
+
+    completion = client.chat.completions.create(
+        model="aisingapore/Gemma-SEA-LION-v3-9B-IT",
+        messages=[
+            {
+            "role": "user",
+            "content": "what is kaypoh ji"
+            }
+        ]
+    )
+    return(render_template("llama_reply.html",r=completion.choices[0].message.content))
+
 @app.route("/dbs",methods=["GET","POST"])
 def dbs():
     return(render_template("dbs.html"))
