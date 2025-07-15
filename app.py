@@ -32,6 +32,15 @@ def llama_reply():
 
     client = Groq()
     completion = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[
+            {
+                "role": "user",
+                "content": q
+            }
+        ]
+    )
+    completion1 = client.chat.completions.create(
         model="deepseek-r1-distill-llama-70b",
         messages=[
             {
@@ -40,7 +49,7 @@ def llama_reply():
             }
         ]
     )
-    return(render_template("llama_reply.html",r=completion.choices[0].message.content, r1=q))
+    return(render_template("llama_reply.html",r=completion.choices[0].message.content, r1=completion1.choices[0].message.content))
 
 @app.route("/sealion",methods=["GET","POST"])
 def sealion():
