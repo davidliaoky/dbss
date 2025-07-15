@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
 from groq import Groq
+from openai import OpenAI
 
 # Need to add K.e.y. here
 import os
@@ -42,7 +43,7 @@ def llama_reply():
     return(render_template("llama_reply.html",r=completion.choices[0].message.content))
 
 @app.route("/sealion",methods=["GET","POST"])
-def llama():
+def sealion():
     return(render_template("sealion.html"))
 
 @app.route("/sealion_reply",methods=["GET","POST"])
@@ -51,6 +52,7 @@ def sealion_reply():
     # load model
 
     client = OpenAI(
+        #api_key = "sk-7GVcy5oGCRXOrEW3qh0Z1w",
         api_key=os.environ['SEALION_API_KEY'],
         base_url="https://api.sea-lion.ai/v1"
     )
