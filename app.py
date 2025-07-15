@@ -53,7 +53,7 @@ def sealion_reply():
 
     client = OpenAI(
         #api_key = "sk-7GVcy5oGCRXOrEW3qh0Z1w",
-        api_key=os.environ['SEALION_API_KEY'],
+        api_key=os.getenv("sealion"),
         base_url="https://api.sea-lion.ai/v1"
     )
 
