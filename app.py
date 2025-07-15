@@ -3,7 +3,9 @@ import joblib
 from groq import Groq
 
 # Need to add K.e.y. here
-
+import os
+#for cloud
+os.environ['GROQ_API_KEY'] = os.getenv("groq")
 
 # must correspond to file name
 app = Flask(__name__)
