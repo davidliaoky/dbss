@@ -73,11 +73,11 @@ def sealion_reply():
         messages=[
             {
             "role": "user",
-            "content": "what is kaypoh ji"
+            "content": q
             }
         ]
     )
-    return(render_template("llama_reply.html",r=completion.choices[0].message.content))
+    return(render_template("sealion_reply.html",r=completion.choices[0].message.content))
 
 @app.route("/dbs",methods=["GET","POST"])
 def dbs():
