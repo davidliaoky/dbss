@@ -7,7 +7,7 @@ import requests
 # Need to add K.e.y. here
 import os
 #for cloud
-os.environ['GROQ_API_KEY'] = os.getenv("groq")
+#os.environ['GROQ_API_KEY'] = os.getenv("groq")
 
 # must correspond to file name
 app = Flask(__name__)
@@ -82,6 +82,19 @@ def sealion_reply():
 def dbs():
     return(render_template("dbs.html"))
 
+@app.route("/prediction",methods=["GET","POST"])
+def prediction():
+    q = float(request.form.get("q"))
+    #return(render_template("prediction.html",r=(-50.6*q)+90.2))
+
+    # load model
+    model = joblib.load("dbs.jl")
+
+    # make prediction
+    pred = model.predict([[q]])
+
+    return(render_template("prediction.html",r=pred))
+
 @app.route("/telegram",methods=["GET","POST"])
 def telegram():
 
@@ -103,19 +116,37 @@ def telegram():
     
     return(render_template("telegram.html", status=status))
 
-@app.route("/prediction",methods=["GET","POST"])
-def prediction():
-    q = float(request.form.get("q"))
-    #return(render_template("prediction.html",r=(-50.6*q)+90.2))
+@app.route("/webhook",methods=["GET","POST"])
+def webhook():
 
-    # load model
-    model = joblib.load("dbs.jl")
+    # This endpoint will be called by Telegram when a new message is received
+    update = request.get_json()
+    if "message" in update and "text" in update["message"]:
+        # Extract the chat ID and message text from the update
+        chat_id = update["message"]["chat"]["id"]
+        query = update["message"]["text"]
 
-    # make prediction
-    pred = model.predict([[q]])
+        # Pass the query to the Groq model
+        client = Groq()
+        completion_ds = client.chat.completions.create(
+            model="deepseek-r1-distill-llama-70b",
+            messages=[
+                {
+                    "role": "user",
+                    "content": query
+                }
+            ]
+        )
+        response_message = completion_ds.choices[0].message.content
 
-    return(render_template("prediction.html",r=pred))
-
+        # Send the response back to the Telegram chat
+        send_message_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        requests.post(send_message_url, json={
+            "chat_id": chat_id,
+            "text": response_message
+        })
+    return('ok', 200)
+    
 # for local testing
 if __name__ == "__main__":
     app.run()
