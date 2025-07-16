@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import joblib
 from groq import Groq
 from openai import OpenAI
+import requests
 
 # Need to add K.e.y. here
 import os
