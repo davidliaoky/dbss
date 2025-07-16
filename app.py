@@ -9,7 +9,7 @@ import os
 #for cloud
 #os.environ['GROQ_API_KEY'] = os.getenv("groq")
 groq_api_key = os.getenv("GROQ_API_KEY")
-telegram_token = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # must correspond to file name
 app = Flask(__name__)
