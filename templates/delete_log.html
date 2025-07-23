@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Delete Log</title>
@@ -11,15 +12,11 @@
         <h2>Record with ID {{ rowid }} has been deleted.</h2>
     {% endif %}
 
-    <!-- Add space or line break -->
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    
-
-    <!-- Or wrap in a block-level div -->
-    <div>
-        <a href="/user_log"><button>Back to User Logs</button></a>
+    <!-- This forces a line break -->
+    <div style="margin-top: 20px;">
+        <a href="/user_log">
+            <button type="button">Back to User Logs</button>
+        </a>
     </div>
 </body>
 </html>
