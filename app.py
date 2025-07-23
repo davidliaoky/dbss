@@ -3,6 +3,7 @@ import joblib
 from groq import Groq
 from openai import OpenAI
 import requests
+import sqlite3
 
 # Need to add K.e.y. here
 import os
@@ -21,8 +22,19 @@ def index():
 def main():
     q = request.form.get("q")
     #db - insert
+    # Get current timestamp
+    now = datetime.now()
+
+    # Insert into SQLite DB
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+
+    # Insert user input and timestamp
+    cursor.execute("INSERT INTO user (name, timestamp) VALUES (?, ?)", (name, now))
+    conn.commit()
+    conn.close()
     
-    return(render_template("main.html"))
+    return render_template("main.html", name=name, timestamp=now)
 
 @app.route("/llama",methods=["GET","POST"])
 def llama():
@@ -170,3 +182,28 @@ def webhook():
 # for local testing
 if __name__ == "__main__":
     app.run()
+
+@app.route("/user_log", methods=["GET"])
+def user_log():
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT rowid, name, timestamp FROM user ORDER BY timestamp DESC")
+    records = cursor.fetchall()
+
+    conn.close()
+    
+    return render_template("user_log.html", records=records)
+
+@app.route("/delete_log", methods=["POST"])
+def delete_log():
+    rowid = request.form.get("rowid")
+
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM user WHERE rowid = ?", (rowid,))
+    conn.commit()
+    conn.close()
+
+    return render_template("delete_log.html", rowid=rowid)
