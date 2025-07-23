@@ -4,6 +4,7 @@ from groq import Groq
 from openai import OpenAI
 import requests
 import sqlite3
+from datetime import datetime
 
 # Need to add K.e.y. here
 import os
