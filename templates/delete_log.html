@@ -1,11 +1,8 @@
-<head>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',
-        filename='styles.css') }}">
-</head>
+<html>
 <head>
     <title>Delete Log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     {% if rowid == "ALL" %}
@@ -13,5 +10,13 @@
     {% else %}
         <h2>Record with ID {{ rowid }} has been deleted.</h2>
     {% endif %}
-    <a href="/user_log"><button>Back to User Logs</button></a>
+
+    <!-- Add space or line break -->
+    <br><br>
+
+    <!-- Or wrap in a block-level div -->
+    <div>
+        <a href="/user_log"><button>Back to User Logs</button></a>
+    </div>
 </body>
+</html>
