@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    {% if rowid == "ALL" %}
-        <h2>All Logs Deleted</h2>
-    {% else %}
-        <h2>Record with ID {{ rowid }} has been deleted.</h2>
-    {% endif %}
+    <div class="container">
+        {% if rowid == "ALL" %}
+            <h2>All Logs Deleted</h2>
+        {% else %}
+            <h2>Record with ID {{ rowid }} has been deleted.</h2>
+        {% endif %}
 
-    <!-- This forces a line break -->
-    <div style="margin-top: 20px;">
-        <a href="/user_log">
-            <button type="button">Back to User Logs</button>
-        </a>
+        <form action="/user_log" method="get">
+            <button type="submit">Back to User Logs</button>
+        </form>
     </div>
 </body>
 </html>
