@@ -21,7 +21,7 @@ def index():
 
 @app.route("/main",methods=["GET","POST"])
 def main():
-    q = request.form.get("q")
+    name = request.form.get("q")
     #db - insert
     # Get current timestamp
     now = datetime.now()
@@ -180,10 +180,6 @@ def webhook():
         })
     return('ok', 200)
     
-# for local testing
-if __name__ == "__main__":
-    app.run()
-
 @app.route("/user_log", methods=["GET"])
 def user_log():
     conn = sqlite3.connect("user.db")
@@ -208,3 +204,7 @@ def delete_log():
     conn.close()
 
     return render_template("delete_log.html", rowid=rowid)
+
+# for local testing
+if __name__ == "__main__":
+    app.run()
