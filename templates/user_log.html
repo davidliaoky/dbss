@@ -1,30 +1,39 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <title>User Log</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',
+        filename='styles.css') }}">
 </head>
 <body>
-    <h2>User Log</h2>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Timestamp</th>
-            <th>Action</th>
-        </tr>
-        {% for row in records %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>
-                <form action="/delete_log" method="POST" style="display:inline;">
-                    <input type="hidden" name="rowid" value="{{ row[0] }}">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h2>User Log</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+            </tr>
+            {% for row in records %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>
+                    <form action="/delete_log" method="POST" style="display:inline;">
+                        <input type="hidden" name="rowid" value="{{ row[0] }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <!-- Back to main.html -->
+        <form action="/main" method="get">
+            <input type="submit" value="Back to Main">
+        </form>
+    </div>
 </body>
-</html>
