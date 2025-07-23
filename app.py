@@ -205,6 +205,15 @@ def delete_log():
 
     return render_template("delete_log.html", rowid=rowid)
 
+@app.route("/delete_all_logs", methods=["POST"])
+def delete_all_logs():
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM user")
+    conn.commit()
+    conn.close()
+    return render_template("delete_log.html", rowid="ALL")
+    
 # for local testing
 if __name__ == "__main__":
     app.run()
