@@ -6,7 +6,7 @@ body {
     padding: 20px;
 }
 
-/* Centered layout wrapper */
+/* Layout wrapper */
 .main-wrapper {
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@ body {
     padding: 40px 20px;
 }
 
-/* Main content box */
+/* White card container */
 .container {
     background-color: #ffffff;
     padding: 30px;
@@ -25,26 +25,31 @@ body {
     text-align: center;
 }
 
-/* Image inside container */
+/* Image styling inside container */
 .image-in-container {
     max-width: 100%;
+    max-height: 200px;
     height: auto;
     border-radius: 8px;
     margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Headings */
+/* Heading */
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Form and button styling */
+/* Forms */
 form {
     margin: 15px 0;
 }
 
+/* Submit buttons */
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -58,6 +63,7 @@ input[type="submit"] {
     max-width: 300px;
 }
 
+/* Inputs and buttons base */
 input, button {
     width: 100%;
     padding: 10px;
@@ -67,6 +73,7 @@ input, button {
     font-size: 16px;
 }
 
+/* Buttons */
 button {
     background-color: #007bff;
     color: white;
@@ -85,7 +92,7 @@ p {
     color: #007bff;
 }
 
-/* Mobile responsive tweaks */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .container {
         padding: 20px;

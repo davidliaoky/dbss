@@ -20,3 +20,22 @@
             <form action="/dbs" method="post">
                 <input type="submit" value="Predict DBS price">
             </form>
+            <form action="/telegram" method="post">
+                <input type="submit" value="Start Telegram">
+            </form>
+            <form action="/stop_telegram" method="post">
+                <input type="submit" value="Stop Telegram">
+            </form>
+            <form action="/user_log" method="get">
+                <input type="submit" value="User Logs">
+            </form>
+            <form action="/delete_all_logs" method="post" onsubmit="return confirm('Are you sure you want to delete all logs?');">
+                <input type="submit" value="Delete All Logs">
+            </form>
+            <form action="/emotion" method="get">
+                <input type="submit" value="Open Emotion Interface">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
