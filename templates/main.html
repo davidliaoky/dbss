@@ -5,31 +5,35 @@
         filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-    <h2>Main</h2>
-        <form action="/llama" method="post">
-            <input type="submit" value="LLAMA Deepseek chatbot via groq">
-        </form>
-        <form action="/sealion" method="post">
-            <input type="submit" value="Sealion chatbot">
-        </form>
-        <form action="/dbs" method="post">
-            <input type="submit" value="Predict DBS price">
-        </form>
-        <form action="/telegram" method="post">
-            <input type="submit" value="Start Telegram">
-        </form>
-        <form action="/stop_telegram" method="post">
-            <input type="submit" value="Stop Telegram">
-        </form>
-        <form action="/user_log" method="get">
-            <input type="submit" value="User Logs">
-        </form>        
-        <form action="/delete_all_logs" method="POST" onsubmit="return confirm('Are you sure you want to delete all logs?');">
-            <input type="submit" value="Delete All Logs">
-        </form>
-        <form action="/emotion" method="get">
-            <input type="submit" value="Emotion Classifier">
-        </form>
+    <div class="main-wrapper">
+        <img src="{{ url_for('static', filename='chip_n_dale.png') }}" alt="Chip and Dale" class="side-image">
+        
+        <div class="container">
+            <h2>Main</h2>
+            <form action="/llama" method="post">
+                <input type="submit" value="LLAMA Deepseek chatbot via groq">
+            </form>
+            <form action="/sealion" method="post">
+                <input type="submit" value="Sealion chatbot">
+            </form>
+            <form action="/dbs" method="post">
+                <input type="submit" value="Predict DBS price">
+            </form>
+            <form action="/telegram" method="post">
+                <input type="submit" value="Start Telegram">
+            </form>
+            <form action="/stop_telegram" method="post">
+                <input type="submit" value="Stop Telegram">
+            </form>
+            <form action="/user_log" method="get">
+                <input type="submit" value="User Logs">
+            </form>
+            <form action="/delete_all_logs" method="POST" onsubmit="return confirm('Are you sure you want to delete all logs?');">
+                <input type="submit" value="Delete All Logs">
+            </form>
+            <form action="/emotion" method="get">
+                <input type="submit" value="Open Emotion Interface">
+            </form>
+        </div>
     </div>
 </body>
