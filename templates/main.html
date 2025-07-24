@@ -8,7 +8,7 @@
     <div class="container">
     <h2>Main</h2>
         <form action="/llama" method="post">
-            <input type="submit" value="LLAMA + Deepseek chatbot via groq">
+            <input type="submit" value="LLAMA Deepseek chatbot via groq">
         </form>
         <form action="/sealion" method="post">
             <input type="submit" value="Sealion chatbot">
@@ -27,6 +27,22 @@
         </form>        
         <form action="/delete_all_logs" method="POST" onsubmit="return confirm('Are you sure you want to delete all logs?');">
             <input type="submit" value="Delete All Logs">
-        </form>         
+        </form>
+        <button onclick="toggleIframe()">Show Emotion Interface</button>
+        <div id="emotionIframe" style="display: none; margin-top: 20px;">
+            <iframe
+                src="https://davidliaoky-first-time.hf.space"
+                frameborder="0"
+                width="850"
+                height="450"
+            ></iframe>
+        </div>
+
+        <script>
+        function toggleIframe() {
+            const iframeDiv = document.getElementById("emotionIframe");
+            iframeDiv.style.display = iframeDiv.style.display === "none" ? "block" : "none";
+        }
+        </script>
     </div>
 </body>
