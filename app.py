@@ -213,7 +213,11 @@ def delete_all_logs():
     conn.commit()
     conn.close()
     return render_template("delete_log.html", rowid="ALL")
-    
+
+@app.route("/emotion", methods=["GET"])
+def emotion():
+    return render_template("emotion.html")
+
 # for local testing
 if __name__ == "__main__":
     app.run()

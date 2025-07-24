@@ -28,21 +28,8 @@
         <form action="/delete_all_logs" method="POST" onsubmit="return confirm('Are you sure you want to delete all logs?');">
             <input type="submit" value="Delete All Logs">
         </form>
-        <button onclick="toggleIframe()">Show Emotion Interface</button>
-        <div id="emotionIframe" style="display: none; margin-top: 20px;">
-            <iframe
-                src="https://davidliaoky-first-time.hf.space"
-                frameborder="0"
-                width="850"
-                height="450"
-            ></iframe>
-        </div>
-
-        <script>
-        function toggleIframe() {
-            const iframeDiv = document.getElementById("emotionIframe");
-            iframeDiv.style.display = iframeDiv.style.display === "none" ? "block" : "none";
-        }
-        </script>
+        <form action="/emotion" method="get">
+            <input type="submit" value="Emotion Classifier">
+        </form>
     </div>
 </body>
