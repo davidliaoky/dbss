@@ -1,13 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',
-        filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="main-wrapper">
         <img src="{{ url_for('static', filename='chip_n_dale.png') }}" alt="Chip and Dale" class="side-image">
-        
+
         <div class="container">
             <h2>Main</h2>
             <form action="/llama" method="post">
@@ -28,7 +30,7 @@
             <form action="/user_log" method="get">
                 <input type="submit" value="User Logs">
             </form>
-            <form action="/delete_all_logs" method="POST" onsubmit="return confirm('Are you sure you want to delete all logs?');">
+            <form action="/delete_all_logs" method="post" onsubmit="return confirm('Are you sure you want to delete all logs?');">
                 <input type="submit" value="Delete All Logs">
             </form>
             <form action="/emotion" method="get">
@@ -37,3 +39,4 @@
         </div>
     </div>
 </body>
+</html>
